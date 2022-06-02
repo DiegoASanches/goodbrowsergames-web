@@ -1,4 +1,15 @@
 <div class="container">
   <app-header [showBanner]="false"></app-header>
 
+  <ng-container *ngIf="games$ | async as games">
+    <ng-container *ngIf="games?.results.length > 0">
+      <app-slider title="Meus Jogos" [games]="games" [sliderConfig]="sliderConfig"></app-slider>
+    </ng-container>
+
+    <ng-container *ngIf="!games || games?.results.length === 0">
+      <div class="no-games">
+        <h2>Não há jogos cadastrados</h2>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>

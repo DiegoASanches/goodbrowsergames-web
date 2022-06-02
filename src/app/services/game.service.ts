@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {Games, ResultsEntity} from '../models/games';
+import { LoginService } from './login.service';
 
 const enum endpoint {
   latest = '/movie/latest',
@@ -22,11 +23,19 @@ export class GameService {
   // tslint:disable-next-line:variable-name
   private api_key = environment.api;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private loginService: LoginService
+  ) {
   }
 
   getTrending(): Observable<Games> {
     return this.http.get<Games>(`${environment.apiEndpoint}/game`);
+  }
+
+  getMyGames(): Observable<Games> {
+    const user = this.loginService.getMyUser();
+    return this.http.get<Games>(`${environment.apiEndpoint}/myGames?_id=${user._id}`);
   }
 
   create(data: ResultsEntity) {

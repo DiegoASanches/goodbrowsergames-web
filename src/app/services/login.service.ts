@@ -8,7 +8,8 @@ export interface LoginData {
   password: string;
 }
 
-export interface SignupData {
+export interface User {
+  _id?: string;
   name: string;
   email: string;
   password: string;
@@ -22,6 +23,7 @@ export interface Role {
 
 export interface LoginResult {
   token: string;
+  user: User;
 }
 
 @Injectable({
@@ -36,12 +38,14 @@ export class LoginService {
   login(data: LoginData) {
     return this.http.post(`${environment.apiEndpoint}/login`, data).pipe(
       tap((result: LoginResult) => {
+        if (!result.token || !result.user) { return; }
         this.saveToken(result.token);
+        this.saveUser(result.user);
       }),
     );
   }
 
-  signup(data: SignupData) {
+  signup(data: User) {
     return this.http.post(`${environment.apiEndpoint}/user`, data).pipe(
       tap(result => {
         console.log('result', result);
@@ -51,6 +55,14 @@ export class LoginService {
 
   saveToken(token: string) {
     localStorage.setItem('AuthToken', token);
+  }
+
+  saveUser(user: User) {
+    localStorage.setItem('User', JSON.stringify(user));
+  }
+
+  getMyUser(): User {
+    return JSON.parse(localStorage.getItem('User'));
   }
 
   getToken(): string {

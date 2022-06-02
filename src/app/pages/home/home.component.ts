@@ -29,7 +29,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs.push(this.movie.getTrending().subscribe(data => {
-      console.log('data', data);
       this.trending = data;
       this.headerBGUrl = this.trending.results.length > 0 ? this.trending.results[0].posterPath : null;
     }));
