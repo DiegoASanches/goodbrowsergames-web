@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import { Games } from 'src/app/models/games';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +16,15 @@ export class HeaderComponent implements OnInit {
   sticky: boolean = false;
   @ViewChild('stickHeader') header: ElementRef;
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService
+  ) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.loginService.logout();
   }
 
   @HostListener('window:scroll', ['$event'])

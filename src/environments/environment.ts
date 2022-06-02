@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  api: '9357268c262a35e41df4cb3774d28301'
+  api: '9357268c262a35e41df4cb3774d28301',
+  apiEndpoint: 'http://localhost:3001',
+  defaultPath: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019',
 };
 
 /*

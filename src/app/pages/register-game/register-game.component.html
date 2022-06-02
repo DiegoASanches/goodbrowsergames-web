@@ -1,0 +1,22 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Logo -->
+    <div class="fadeIn first">
+      <img class="logo" src="assets/logo-black.png" alt="logo">
+    </div>
+
+    <h3>Cadastro de Jogos</h3>
+
+    <!-- Login Form -->
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input formControlName="title" type="text" id="login" class="fadeIn second" name="title" placeholder="Título">
+      <textarea formControlName="overview" class="fadeIn second" name="overview" placeholder="Descrição"></textarea>
+      <input formControlName="posterPath" type="text" id="posterPath" class="fadeIn third" name="posterPath" placeholder="URL da imagem de capa">
+      <input [disabled]="!form.valid" type="submit" class="fadeIn fourth" value="Cadastrar">
+    </form>
+
+  </div>
+</div>

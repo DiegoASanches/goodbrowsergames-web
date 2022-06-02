@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { environment } from 'src/environments/environment';
 import {Games} from '../../models/games';
 
 @Component({
@@ -10,6 +11,8 @@ export class SliderComponent implements OnInit {
    @Input() sliderConfig;
    @Input() games: Games;
    @Input() title: string;
+
+   environment = environment;
 
   constructor() { }
 

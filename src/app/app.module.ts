@@ -8,13 +8,16 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import { SliderComponent } from './components/slider/slider.component';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { MyGamesComponent } from './pages/my-games/my-games.component';
-
+import { NgxLoadingModule } from 'ngx-loading';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterGameComponent } from './pages/register-game/register-game.component';
+import { AuthGuard } from './services/auth.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +26,7 @@ import { MyGamesComponent } from './pages/my-games/my-games.component';
     HomeComponent,
     HeaderComponent,
     MyGamesComponent,
+    RegisterGameComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +37,16 @@ import { MyGamesComponent } from './pages/my-games/my-games.component';
     SlickCarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgxLoadingModule.forRoot({})
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+   },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

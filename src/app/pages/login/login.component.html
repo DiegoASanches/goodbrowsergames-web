@@ -1,3 +1,5 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+
 <div class="wrapper fadeInDown">
   <div id="formContent">
 
@@ -7,10 +9,10 @@
     </div>
 
     <!-- Login Form -->
-    <form [formGroup]="form">
-      <input formControlName="username" type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
-      <input formControlName="password" type="text" id="password" class="fadeIn third" name="login" placeholder="Senha">
-      <input type="submit" class="fadeIn fourth" value="Entrar">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <input formControlName="email" type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
+      <input formControlName="password" type="password" id="password" class="fadeIn third" name="login" placeholder="Senha">
+      <input [disabled]="!form.valid" type="submit" class="fadeIn fourth" value="Entrar">
     </form>
 
   </div>

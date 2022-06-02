@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {Games} from '../models/games';
+import {Games, ResultsEntity} from '../models/games';
 
 const enum endpoint {
   latest = '/movie/latest',
@@ -25,52 +25,12 @@ export class GameService {
   constructor(private http: HttpClient) {
   }
 
-  getLatestMovie(): Observable<Games> {
-    return this.http.get<Games>(`${this.URL}${endpoint.latest}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getNowPlaying(): Observable<Games> {
-    return this.http.get<Games>(`${this.URL}${endpoint.now_playing}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getOriginals(): Observable<Games> {
-    return this.http.get<Games>(`${this.URL}${endpoint.originals}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getPopularGames(): Observable<Games> {
-    return this.http.get<Games>(`${this.URL}${endpoint.popular}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
-  getTopRated(): Observable<Games> {
-    return this.http.get<Games>(`${this.URL}${endpoint.top_rated}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
-  }
-
   getTrending(): Observable<Games> {
-    return this.http.get<Games>(`${this.URL}${endpoint.trending}`, {
-      params: {
-        api_key: this.api_key
-      }
-    });
+    return this.http.get<Games>(`${environment.apiEndpoint}/game`);
+  }
+
+  create(data: ResultsEntity) {
+    return this.http.post<ResultsEntity>(`${environment.apiEndpoint}/game`, data);
   }
 
 }
