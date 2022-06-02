@@ -1,0 +1,17 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <!-- Logo -->
+    <div class="fadeIn first">
+      <img class="logo" src="assets/logo-black.png" alt="logo">
+    </div>
+
+    <!-- Login Form -->
+    <form [formGroup]="form">
+      <input formControlName="username" type="text" id="login" class="fadeIn second" name="login" placeholder="Email">
+      <input formControlName="password" type="text" id="password" class="fadeIn third" name="login" placeholder="Senha">
+      <input type="submit" class="fadeIn fourth" value="Entrar">
+    </form>
+
+  </div>
+</div>

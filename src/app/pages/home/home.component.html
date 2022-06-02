@@ -1,0 +1,12 @@
+<div class="container">
+  <app-header [headerBGUrl]="headerBGUrl" [showBanner]="true" [trending]="trending"></app-header>
+
+  <div class="body" style="margin-top: 30rem;" *ngIf="trending">
+    <app-slider title="Trending" [games]="trending" [sliderConfig]="sliderConfig"></app-slider>
+    <app-slider title="Top Rated" [games]="topRated" [sliderConfig]="sliderConfig"></app-slider>
+    <app-slider title="Now Playing" [games]="nowPlaying" [sliderConfig]="sliderConfig"></app-slider>
+    <app-slider title="Originals" [games]="originals" [sliderConfig]="sliderConfig"></app-slider>
+    <app-slider title="Popular" [games]="popular" [sliderConfig]="sliderConfig"></app-slider>
+  </div>
+
+</div>
