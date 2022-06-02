@@ -9,15 +9,16 @@ import { LoginService } from './login.service';
 export class AuthGuard implements CanActivate {
 
   constructor(
-    private gameService: GameService,
+    private loginService: LoginService,
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     const projectID = route.params.projectId;
-    return this.gameService.getTrending().pipe(
-        map(result => {
-            return true;
-        })
-    );
+    if (this.loginService.getToken()) {
+        return true;
+    } else {
+        window.location.href = '/login';
+        return false;
+    }
   }
 }

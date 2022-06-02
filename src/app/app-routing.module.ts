@@ -23,10 +23,12 @@ const routes: Routes = [
   },
   {
     path: 'register-game',
+    canActivate: [AuthGuard],
     component: RegisterGameComponent,
   },
   {
     path: 'my-games',
+    canActivate: [AuthGuard],
     component: MyGamesComponent
   },
   {
