@@ -37,7 +37,7 @@
     "start": "node server.js",
     "test": "jest",
     "jest": "jest --watch",
-    "build": "ng build",
+    "build": "ng build --prod",
     "compodoc": "npx compodoc -p tsconfig.doc.json",
     "lint": "ng lint",
     "e2e": "ng e2e"
