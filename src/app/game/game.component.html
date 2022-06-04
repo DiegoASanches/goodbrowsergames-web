@@ -1,0 +1,44 @@
+<div class="cover-wrapper">
+  <h1>{{ title }}</h1>
+  <img alt="Game Cover" class="cover" src="{{ cover }}">
+</div>
+
+<div class="info">
+  <pre>{{ description }}</pre>
+  <div class="ratings">
+    <div class="your-rating">
+      <strong>Your Rating</strong>
+      <span *ngIf="yourRating" class="rating">
+        ★ {{ yourRating }}
+        <sup>/10</sup>
+      </span>
+      <span *ngIf="!yourRating">☆</span>
+    </div>
+    <div class="gbg-rating">
+      <strong>GBG Rating</strong>
+      <span *ngIf="gbgRating" class="rating">
+        ★ {{ gbgRating }}
+        <sup>/10</sup>
+      </span>
+      <span *ngIf="!gbgRating" class="rating">☆</span>
+    </div>
+  </div>
+</div>
+
+<div class="user-area">
+  <div class="review">
+    <div class="review-header">
+      <div class="description">
+        <h3>Write something about FEZ</h3>
+        <small>Describe what you liked, what you didn't like, or if you'd recommend it to other people.</small>
+      </div>
+      <span class="rating">
+        ☆☆☆☆☆
+      </span>
+    </div>
+    <div class="input">
+      <img src="{{ profilePicture }}" alt="User's profile picture">
+      <textarea class="input" name="user-review" id="user-review" cols="30" rows="6"></textarea>
+    </div>
+  </div>
+</div>
