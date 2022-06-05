@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-game-component',
@@ -14,7 +15,14 @@ export class GameComponent implements OnInit {
   @Input() profilePicture: string = "https://i.imgur.com/ZsJTb3r.png";
   @Input() description: string = "Ex sunt aliquip deserunt aliquip proident. Commodo irure ad anim dolor non ex adipisicing dolor commodo proident irure.";
 
-  constructor() { }
+  gameId: string;
+
+  constructor(private route: ActivatedRoute) {
+    // get the :id from the route
+    this.route.params.subscribe(params => {
+      this.gameId = params.id;
+    });
+  }
 
   ngOnInit(): void {
   }
