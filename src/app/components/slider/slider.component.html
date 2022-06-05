@@ -5,7 +5,11 @@
       <div class="thumbnails">
         <ngx-slick-carousel [config]="sliderConfig" class="carousel">
           <div class="slick-item" *ngFor="let m of games.results">
-            <img [src]="m?.posterPath || environment.defaultPath" alt="{{m.title}}">
+            <img
+              [src]="m?.posterPath || environment.defaultPath"
+              (click)="onClick(m)"
+              alt="{{m.title}}"
+            >
           </div>
         </ngx-slick-carousel>
       </div>

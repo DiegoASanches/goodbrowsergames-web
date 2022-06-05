@@ -18,6 +18,7 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterGameComponent } from './pages/register-game/register-game.component';
 import { AuthGuard } from './services/auth.guard';
+import { GameComponent } from './game/game.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { AuthGuard } from './services/auth.guard';
     HeaderComponent,
     MyGamesComponent,
     RegisterGameComponent,
+    GameComponent,
   ],
   imports: [
     BrowserModule,

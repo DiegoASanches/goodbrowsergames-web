@@ -38,8 +38,8 @@ export class GameService {
     return this.http.get<Games>(`${environment.apiEndpoint}/myGames?_id=${user._id}`);
   }
 
-  getOneGame(gameID: string): Observable<Games> {
-    return this.http.get<Games>(`${environment.apiEndpoint}/game/getOneGame/${gameID}`);
+  getOneGame(gameID: string): Observable<ResultsEntity> {
+    return this.http.get<ResultsEntity>(`${environment.apiEndpoint}/game/getOneGame/${gameID}`);
   }
 
   create(data: ResultsEntity) {
