@@ -1,6 +1,5 @@
 <div class="container">
   <app-header [showBanner]="false"></app-header>
-
 </div>
 <div class="cover-wrapper">
   <h1>{{ title }}</h1>
@@ -42,6 +41,8 @@
     <!-- create one review div for each item in the evaluations array -->
     <div *ngFor="let evaluation of evaluations">
       <div class="review">
+        {{ evaluation?.username }}
+        <br/>
         <ngx-star-rating [(ngModel)]="evaluation.grade.$numberDecimal" [id]="'rating'" [disabled]="true"></ngx-star-rating>
         <p>{{ evaluation.description }}</p>
       </div>

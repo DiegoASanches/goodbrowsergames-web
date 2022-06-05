@@ -41,18 +41,19 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.evaluationService.get(this.gameId).subscribe(data => {
-      console.log('evaluation', data);
-      this.evaluations = data.results;
-    });
-    
-
     this.form = this.fb.group({
       grade: [null],
       description: [null]
     });
 
     this.getGame();
+    this.getEvaluation();
+  }
+
+  getEvaluation() {
+    this.evaluationService.get(this.gameId).subscribe(data => {
+      this.evaluations = data.results;
+    });
   }
 
   getGame() {
@@ -67,6 +68,7 @@ export class GameComponent implements OnInit {
   post() {
     this.evaluationService.updateOrCreate(this.gameId, this.form.get('description').value, this.form.get('grade').value).pipe(
       tap(() => this.getGame()),
+      tap(() => this.getEvaluation()),
     ).subscribe(() => {
       Swal.fire({
         icon: 'success',
