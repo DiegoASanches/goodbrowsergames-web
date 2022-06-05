@@ -1,0 +1,12 @@
+<section class="members">
+  <h1>Members: </h1>
+  
+  <div
+    *ngFor="let member of users"
+    class="member"
+  >
+    <strong>{{ member.name }}</strong>
+
+    <small>Created at: {{ member.createdAt | date: 'MM/dd/yyyy' }}</small>
+  </div>
+</section>
