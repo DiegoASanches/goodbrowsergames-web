@@ -18,10 +18,11 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterGameComponent } from './pages/register-game/register-game.component';
 import { AuthGuard } from './services/auth.guard';
-import { GameComponent } from './game/game.component';
+import { GameComponent } from './components/game/game.component';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { NgxInputStarRatingModule } from 'ngx-input-star-rating';
+import { UsersComponent } from './components/users/users.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { NgxInputStarRatingModule } from 'ngx-input-star-rating';
     MyGamesComponent,
     RegisterGameComponent,
     GameComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,

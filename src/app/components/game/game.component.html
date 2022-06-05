@@ -36,4 +36,14 @@
     </div>
     <button mat-raised-button color="primary" (click)="post()">Postar</button>
   </div>
+
+  <div class="reviews">
+    <strong>User reviews</strong>
+    <!-- create one review div for each item in the evaluations array -->
+    <div *ngFor="let evaluation of evaluations">
+      <div class="review">
+        <ngx-star-rating [(ngModel)]="evaluation.grade.$numberDecimal" [id]="'rating'" [disabled]="true"></ngx-star-rating>
+        <p>{{ evaluation.description }}</p>
+      </div>
+  </div>
 </div>

@@ -10,6 +10,9 @@ export interface Evaluation {
   description: string;
   grade: number;
 }
+export interface EvaluationList {
+  results: Evaluation[];
+}
 
 @Injectable({
   providedIn: 'root'
@@ -31,8 +34,8 @@ export class EvaluationService {
     });
   }
 
-  get(gameId: string) {
-    return this.http.get(`${environment.apiEndpoint}/evaluation?game=${gameId}`);
+  get(gameId: string): Observable<EvaluationList> {
+    return this.http.get(`${environment.apiEndpoint}/evaluation?game=${gameId}`) as Observable<EvaluationList>;
   }
 
 }
