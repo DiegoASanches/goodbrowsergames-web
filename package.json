@@ -34,6 +34,7 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
+    "serve:prod": "ng serve --prod",
     "start": "node server.js",
     "test": "jest",
     "jest": "jest --watch",
