@@ -11,7 +11,7 @@ import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { MyGamesComponent } from './pages/my-games/my-games.component';
 import { NgxLoadingModule } from 'ngx-loading';
@@ -19,6 +19,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterGameComponent } from './pages/register-game/register-game.component';
 import { AuthGuard } from './services/auth.guard';
 import { GameComponent } from './game/game.component';
+import { MatButtonModule } from '@angular/material/button';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { NgxInputStarRatingModule } from 'ngx-input-star-rating';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +44,12 @@ import { GameComponent } from './game/game.component';
     SlickCarouselModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxLoadingModule.forRoot({})
+    NgxLoadingModule.forRoot({}),
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgxStarRatingModule,
+    NgxInputStarRatingModule
   ],
   providers: [
     AuthGuard,
