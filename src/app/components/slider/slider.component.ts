@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import {Games} from '../../models/games';
 
@@ -8,15 +9,19 @@ import {Games} from '../../models/games';
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
-   @Input() sliderConfig;
-   @Input() games: Games;
-   @Input() title: string;
+  @Input() sliderConfig;
+  @Input() games: Games;
+  @Input() title: string;
 
-   environment = environment;
+  environment = environment;
 
-  constructor() { }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
+  }
+
+  onClick(m: any) {
+    this.router.navigate(['/game', m?._id]);
   }
 
 }
